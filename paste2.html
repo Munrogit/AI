@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>US State Capitols Interactive Exam - 5th Grade</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        usa: {
+                            blue: '#0a2540',
+                            red: '#da291c',
+                            accent: '#38bdf8',
+                            darkBg: '#0f172a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .print-break {
+                page-break-after: always;
+            }
+            .interactive-box {
+                border: 1px solid #94a3b8 !important;
+                background: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen font-sans transition-colors duration-200">
+
+    <!-- Header Banner (no-print) -->
+    <header class="no-print bg-gradient-to-r from-indigo-900 via-usa-blue to-indigo-950 text-white shadow-xl">
+        <div class="max-w-6xl mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="bg-white/10 p-3 rounded-2xl backdrop-blur-sm border border-white/20">
+                    <!-- American Flag / Dome SVG Icon -->
+                    <svg class="w-8 h-8 text-usa-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                    </svg>
+                </div>
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-usa-accent">Social Studies Unit 4</span>
+                    <h1 class="text-2xl font-black tracking-tight">US State Capitols Quest</h1>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-3">
+                <!-- Theme Toggle -->
+                <button id="themeToggle" class="p-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl transition duration-150" title="Toggle Light/Dark Theme">
+                    <span class="dark:hidden">🌙 Dark Mode</span>
+                    <span class="hidden dark:inline">☀️ Light Mode</span>
+                </button>
+                <a href="#teacherPortal" class="px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm rounded-xl transition shadow-lg shadow-indigo-500/20">
+                    🏫 Teacher Portal
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Workspace -->
+    <main class="max-w-4xl mx-auto px-4 py-8">
+        
+        <!-- Print Header (Visible during Print only) -->
+        <div class="hidden print:block mb-8 border-b-2 border-slate-900 pb-4">
+            <h1 class="text-3xl font-bold text-center uppercase tracking-wide">US State Capitols Examination</h1>
+            <p class="text-center text-sm font-medium text-slate-600">Grade Level: 5th Grade Social Studies & Geography</p>
+            <div class="grid grid-cols-2 gap-4 mt-6">
+                <div><strong>Student Name:</strong> ___________________________</div>
+                <div class="text-right"><strong>Date:</strong> ___________________</div>
+            </div>
+        </div>
+
+        <!-- Instructions Panel -->
+        <div class="no-print bg-white dark:bg-slate-900 rounded-2xl p-6 mb-8 border border-slate-200 dark:border-slate-800 shadow-md">
+            <h2 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                <span class="p-1.5 bg-amber-500/10 text-amber-500 rounded-lg">⭐</span>
+                Hey there, Future Explorer!
+            </h2>
+            <p class="text-sm text-slate-600 dark:text-slate-350 mt-2 leading-relaxed">
+                Welcome to your State Capitols journey! Below are 10 interactive questions designed to show off your amazing geography skills. 
+                Complete all multiple-choice, matching, fill-in-the-blank, and creative writing prompts, and then press <strong class="text-indigo-600 dark:text-indigo-400">"Submit Exam"</strong> at the bottom to see how you did!
+            </p>
+        </div>
+
+        <!-- Quiz Container -->
+        <form id="quizForm" class="space-y-8">
+            
+            <!-- SECTION 1: Multiple Choice (Questions 1 - 5) -->
+            <div class="space-y-6">
+                <div class="border-l-4 border-indigo-600 pl-4 py-1">
+                    <h3 class="text-xl font-bold uppercase tracking-wide">Part 1: Multiple Choice</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Choose the best answer for each question.</p>
+                </div>
+
+                <!-- Q1 -->
+                <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm interactive-box">
+                    <div class="flex items-start gap-3">
+                        <span class="bg-indigo-100 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 font-bold px-2.5 py-1 rounded-lg text-sm">Q1</span>
+                        <div>
+                            <h4 class="font-bold text-md text-slate-900 dark:text-white">Texas is known as the "Lone Star State." What is the capital city of Texas?</h4>
+                            <p class="text-xs text-slate-400 mt-1">Hint: This city is famous for music and has bats living under its Congress Avenue Bridge!</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
+                        <label class="flex items-center gap-3 p-3.5 bg-slate-50 hover:bg-slate-100 dark:bg-slate-950 dark:hover:bg-slate-900/60 rounded-xl cursor-pointer transition border border-slate-200/50 dark:border-slate-800/50">
+                            <input type="radio" name="q1" value="A" class="w-4 h-4 text-indigo-600 focus:ring-indigo-500">
+                            <span>A) Houston</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3.5 bg-slate-50 hover:bg-slate-100 dark:bg-slate-950 dark:hover:bg-slate-900/60 rounded-xl cursor-pointer transition border border-slate-200/50 dark:border-slate-800/50">
+                            <input type="radio" name="q1" value="B" class="w-4 h-4 text-indigo-600 focus:ring-indigo-500">
+                            <span>B) Dallas</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3.5 bg-slate-50 hover:bg-slate-100 dark:bg-slate-950 dark:hover:bg-slate-900/60 rounded-xl cursor-pointer transition border border-slate-200/50 dark:border-slate-800/50">
+                            <input type="radio" name="q1" value="C" class="w-4 h-4 text-indigo-600 focus:ring-indigo-500">
+                            <span>C) Austin</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3.5 bg-slate-50 hover:bg-slate-100 dark:bg-slate-950 dark:hover:bg-slate-900/60 rounded-xl cursor-pointer transition border border-slate-200/50 dark:border-slate-800/50">
+                            <input type="radio" name="q1" value="D" class="w-4 h-4 text-indigo-600 focus:ring-indigo-500">
+                            <span>D) San Antonio</span>
+                        </label>
+                    </div>
+                    <div id="feedback-q1" class="hidden mt-4 p-3.5 rounded-xl text-sm leading-relaxed"></div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm interactive-box">
+                    <div class="flex items-start gap-3">
+                        <span class="bg-indigo-100 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 font-bold px-2.5 py-1 rounded-lg text-sm">Q2</span>
+                        <div>
+                            <h4 class="font-bold text-md text-slate-900 dark:text-white">While New York City is the biggest city in New York, it is not the capital! Which city holds the title of New York's state capital?</h4>
+                            <p class="text-xs text-slate-400 mt-1">Hint: This city sits along the Hudson River and is home to the Empire State Plaza.</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
+                        <label class="flex items-center gap-3 p-3.5 bg-slate-50 hover:bg-slate-100 dark:bg-slate-950 dark:hover:bg-slate-900/60 rounded-xl cursor-pointer transition border border-slate-200/50 dark:border-slate-800/50">
+                            <input type="radio" name="q2" value="A" class="w-4 h-4 text-indigo-600 focus:ring-indigo-500">
+                            <span>A) New York City</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3.5 bg-slate-50 hover:bg-slate-100 dark:bg-slate-950 dark:hover:bg-slate-900/60 rounded-xl cursor-pointer transition border border-slate-200/50 dark:border-slate-800/50">
+                            <input type="radio" name="q2" value="B" class="w-4 h-4 text-indigo-600 focus:ring-indigo-500">
+                            <span>B) Buffalo</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3.5 bg-slate-50 hover:bg-slate-100 dark:bg-slate-950 dark:hover:bg-slate-900/60 rounded-xl cursor-pointer transition border border-slate-200/50 dark:border-slate-800/50">
+                            <input type="radio" name="q2" value="C" class="w-4 h-4 text-indigo-600 focus:ring-indigo-500">
+                            <span>C) Albany</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3.5 bg-slate-50 hover:bg-slate-100 dark:bg-slate-950 dark:hover:bg-slate-900/60 rounded-xl cursor-pointer transition border border-slate-200/50 dark:border-slate-800/50">
+                            <input type="radio" name="q2" value="D" class="w-4 h-4 text-indigo-600 focus:ring-indigo-500">
+                            <span>D) Rochester</span>
+                        </label>
+                    </div>
+                    <div id="feedback-q2" class="hidden mt-4 p-3.5 rounded-xl text-sm leading-relaxed"></div>
+                </div>
+
+                <!-- Q3 -->
+                <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm interactive-box">
+                    <div class="flex items-start gap-3">
+                        <span class="bg-indigo-100 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 font-bold px-2.5 py-1 rounded-lg text-sm">Q3</span>
+                        <div>
+                            <h4 class="font-bold text-md text-slate-900 dark:text-white">California is the Golden State. What is California's state capital?</h4>
+                            <p class="text-xs text-slate-400 mt-1">Hint: This city grew fast during the 1849 Gold Rush and is named after the river nearby.</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
+                        <label class="flex items-center gap-3 p-3.5 bg-slate-50 hover:bg-slate-100 dark:bg-slate-950 dark:hover:bg-slate-900/60 rounded-xl cursor-pointer transition border border-slate-200/50 dark:border-slate-800/50">
+                            <input type="radio" name="q3" value="A" class="w-4 h-4 text-indigo-600 focus:ring-indigo-500">
+                            <span>A) Los Angeles</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3.5 bg-slate-50 hover:bg-slate-100 dark:bg-slate-950 dark:hover:bg-slate-900/60 rounded-xl cursor-pointer transition border border-slate-200/50 dark:border-slate-800/50">
+                            <input type="radio" name="q3" value="B" class="w-4 h-4 text-indigo-600 focus:ring-indigo-500">
+                            <span>B) Sacramento</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3.5 bg-slate-50 hover:bg-slate-100 dark:bg-slate-950 dark:hover:bg-slate-900/60 rounded-xl cursor-pointer transition border border-slate-200/50 dark:border-slate-800/50">
+                            <input type="radio" name="q3" value="C" class="w-4 h-4 text-indigo-600 focus:ring-indigo-500">
+                            <span>C) San Francisco</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3.5 bg-slate-50 hover:bg-slate-100 dark:bg-slate-950 dark:hover:bg-slate-900/60 rounded-xl cursor-pointer transition border border-slate-200/50 dark:border-slate-800/50">
+                            <input type="radio" name="q3" value="D" class="w-4 h-4 text-indigo-600 focus:ring-indigo-500">
+                            <span>D) San Diego</span>
+                        </label>
+                    </div>
+                    <div id="feedback-q3" class="hidden mt-4 p-3.5 rounded-xl text-sm leading-relaxed"></div>
+                </div>
+
+                <!-- Q4 -->
+                <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm interactive-box">
+                    <div class="flex items-start gap-3">
+                        <span class="bg-indigo-100 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 font-bold px-2.5 py-1 rounded-lg text-sm">Q4</span>
+                        <div>
+                            <h4 class="font-bold text-md text-slate-900 dark:text-white">Florida is known for its beautiful beaches and sunshine. What is the capital of Florida?</h4>
+                            <p class="text-xs text-slate-400 mt-1">Hint: Its name comes from an indigenous Muskogean word meaning "old fields" or "abandoned town."</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
+                        <label class="flex items-center gap-3 p-3.5 bg-slate-50 hover:bg-slate-100 dark:bg-slate-950 dark:hover:bg-slate-900/60 rounded-xl cursor-pointer transition border border-slate-200/50 dark:border-slate-800/50">
+                            <input type="radio" name="q4" value="A" class="w-4 h-4 text-indigo-600 focus:ring-indigo-500">
+                            <span>A) Miami</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3.5 bg-slate-50 hover:bg-slate-100 dark:bg-slate-950 dark:hover:bg-slate-900/60 rounded-xl cursor-pointer transition border border-slate-200/50 dark:border-slate-800/50">
+                            <input type="radio" name="q4" value="B" class="w-4 h-4 text-indigo-600 focus:ring-indigo-500">
+                            <span>B) Orlando</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3.5 bg-slate-50 hover:bg-slate-100 dark:bg-slate-950 dark:hover:bg-slate-900/60 rounded-xl cursor-pointer transition border border-slate-200/50 dark:border-slate-800/50">
+                            <input type="radio" name="q4" value="C" class="w-4 h-4 text-indigo-600 focus:ring-indigo-500">
+                            <span>C) Jacksonville</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3.5 bg-slate-50 hover:bg-slate-100 dark:bg-slate-950 dark:hover:bg-slate-900/60 rounded-xl cursor-pointer transition border border-slate-200/50 dark:border-slate-800/50">
+                            <input type="radio" name="q4" value="D" class="w-4 h-4 text-indigo-600 focus:ring-indigo-500">
+                            <span>D) Tallahassee</span>
+                        </label>
+                    </div>
+                    <div id="feedback-q4" class="hidden mt-4 p-3.5 rounded-xl text-sm leading-relaxed"></div>
+                </div>
+
+                <!-- Q5 -->
+                <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm interactive-box">
+                    <div class="flex items-start gap-3">
+                        <span class="bg-indigo-100 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 font-bold px-2.5 py-1 rounded-lg text-sm">Q5</span>
+                        <div>
+                            <h4 class="font-bold text-md text-slate-900 dark:text-white">One US state capital is located exactly one mile high above sea level! Which of these capital cities sits in the Rocky Mountains?</h4>
+                            <p class="text-xs text-slate-400 mt-1">Hint: This city is the capital of Colorado and is nicknamed the "Mile High City."</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
+                        <label class="flex items-center gap-3 p-3.5 bg-slate-50 hover:bg-slate-100 dark:bg-slate-950 dark:hover:bg-slate-900/60 rounded-xl cursor-pointer transition border border-slate-200/50 dark:border-slate-800/50">
+                            <input type="radio" name="q5" value="A" class="w-4 h-4 text-indigo-600 focus:ring-indigo-500">
+                            <span>A) Salt Lake City</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3.5 bg-slate-50 hover:bg-slate-100 dark:bg-slate-950 dark:hover:bg-slate-900/60 rounded-xl cursor-pointer transition border border-slate-200/50 dark:border-slate-800/50">
+                            <input type="radio" name="q5" value="B" class="w-4 h-4 text-indigo-600 focus:ring-indigo-500">
+                            <span>B) Santa Fe</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3.5 bg-slate-50 hover:bg-slate-100 dark:bg-slate-950 dark:hover:bg-slate-900/60 rounded-xl cursor-pointer transition border border-slate-200/50 dark:border-slate-800/50">
+                            <input type="radio" name="q5" value="C" class="w-4 h-4 text-indigo-600 focus:ring-indigo-500">
+                            <span>C) Denver</span>
+                        </label>
+                        <label class="flex items-center gap-3 p-3.5 bg-slate-50 hover:bg-slate-100 dark:bg-slate-950 dark:hover:bg-slate-900/60 rounded-xl cursor-pointer transition border border-slate-200/50 dark:border-slate-800/50">
+                            <input type="radio" name="q5" value="D" class="w-4 h-4 text-indigo-600 focus:ring-indigo-500">
+                            <span>D) Helena</span>
+                        </label>
+                    </div>
+                    <div id="feedback-q5" class="hidden mt-4 p-3.5 rounded-xl text-sm leading-relaxed"></div>
+                </div>
+            </div>
+
+            <!-- SECTION 2: Matching Questions (Questions 6 - 7) -->
+            <div class="space-y-6">
+                <div class="border-l-4 border-emerald-500 pl-4 py-1">
+                    <h3 class="text-xl font-bold uppercase tracking-wide text-emerald-600 dark:text-emerald-400">Part 2: Matching Blocks</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Select the correct matching capital city for each state using the dropdown menus.</p>
+                </div>
+
+                <!-- Q6 Matching Block 1 -->
+                <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm interactive-box">
+                    <div class="flex items-start gap-3 mb-4">
+                        <span class="bg-emerald-100 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 font-bold px-2.5 py-1 rounded-lg text-sm">Q6</span>
+                        <div>
+                            <h4 class="font-bold text-md text-slate-900 dark:text-white">Match the Western & Southern states with their correct capitals:</h4>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-3 bg-slate-50 dark:bg-slate-950 rounded-xl border border-slate-200/40 dark:border-slate-800/40">
+                            <span class="font-semibold text-sm">1. Georgia</span>
+                            <div class="no-print">
+                                <select id="m1_1" class="w-full sm:w-60 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20">
+                                    <option value="">-- Choose Capital --</option>
+                                    <option value="Atlanta">Atlanta</option>
+                                    <option value="Olympia">Olympia</option>
+                                    <option value="Springfield">Springfield</option>
+                                </select>
+                            </div>
+                            <span class="hidden print:inline text-slate-400">Answer: _______________________</span>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-3 bg-slate-50 dark:bg-slate-950 rounded-xl border border-slate-200/40 dark:border-slate-800/40">
+                            <span class="font-semibold text-sm">2. Washington</span>
+                            <div class="no-print">
+                                <select id="m1_2" class="w-full sm:w-60 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20">
+                                    <option value="">-- Choose Capital --</option>
+                                    <option value="Atlanta">Atlanta</option>
+                                    <option value="Olympia">Olympia</option>
+                                    <option value="Springfield">Springfield</option>
+                                </select>
+                            </div>
+                            <span class="hidden print:inline text-slate-400">Answer: _______________________</span>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-3 bg-slate-50 dark:bg-slate-950 rounded-xl border border-slate-200/40 dark:border-slate-800/40">
+                            <span class="font-semibold text-sm">3. Illinois</span>
+                            <div class="no-print">
+                                <select id="m1_3" class="w-full sm:w-60 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20">
+                                    <option value="">-- Choose Capital --</option>
+                                    <option value="Atlanta">Atlanta</option>
+                                    <option value="Olympia">Olympia</option>
+                                    <option value="Springfield">Springfield</option>
+                                </select>
+                            </div>
+                            <span class="hidden print:inline text-slate-400">Answer: _______________________</span>
+                        </div>
+                    </div>
+                    <div id="feedback-q6" class="hidden mt-4 p-3.5 rounded-xl text-sm leading-relaxed"></div>
+                </div>
+
+                <!-- Q7 Matching Block 2 -->
+                <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm interactive-box">
+                    <div class="flex items-start gap-3 mb-4">
+                        <span class="bg-emerald-100 dark:bg-emerald-950/50 text-emerald-600 dark:text-emerald-400 font-bold px-2.5 py-1 rounded-lg text-sm">Q7</span>
+                        <div>
+                            <h4 class="font-bold text-md text-slate-900 dark:text-white">Match the Midwest & Eastern states with their correct capitals:</h4>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-3 bg-slate-50 dark:bg-slate-950 rounded-xl border border-slate-200/40 dark:border-slate-800/40">
+                            <span class="font-semibold text-sm">1. Michigan</span>
+                            <div class="no-print">
+                                <select id="m2_1" class="w-full sm:w-60 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20">
+                                    <option value="">-- Choose Capital --</option>
+                                    <option value="Lansing">Lansing</option>
+                                    <option value="Boston">Boston</option>
+                                    <option value="Phoenix">Phoenix</option>
+                                </select>
+                            </div>
+                            <span class="hidden print:inline text-slate-400">Answer: _______________________</span>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-3 bg-slate-50 dark:bg-slate-950 rounded-xl border border-slate-200/40 dark:border-slate-800/40">
+                            <span class="font-semibold text-sm">2. Massachusetts</span>
+                            <div class="no-print">
+                                <select id="m2_2" class="w-full sm:w-60 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20">
+                                    <option value="">-- Choose Capital --</option>
+                                    <option value="Lansing">Lansing</option>
+                                    <option value="Boston">Boston</option>
+                                    <option value="Phoenix">Phoenix</option>
+                                </select>
+                            </div>
+                            <span class="hidden print:inline text-slate-400">Answer: _______________________</span>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-3 bg-slate-50 dark:bg-slate-950 rounded-xl border border-slate-200/40 dark:border-slate-800/40">
+                            <span class="font-semibold text-sm">3. Arizona</span>
+                            <div class="no-print">
+                                <select id="m2_3" class="w-full sm:w-60 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20">
+                                    <option value="">-- Choose Capital --</option>
+                                    <option value="Lansing">Lansing</option>
+                                    <option value="Boston">Boston</option>
+                                    <option value="Phoenix">Phoenix</option>
+                                </select>
+                            </div>
+                            <span class="hidden print:inline text-slate-400">Answer: _______________________</span>
+                        </div>
+                    </div>
+                    <div id="feedback-q7" class="hidden mt-4 p-3.5 rounded-xl text-sm leading-relaxed"></div>
+                </div>
+            </div>
+
+            <!-- SECTION 3: Fill in the Blank (Question 8) -->
+            <div class="space-y-6">
+                <div class="border-l-4 border-cyan-500 pl-4 py-1">
+                    <h3 class="text-xl font-bold uppercase tracking-wide text-cyan-600 dark:text-cyan-400">Part 3: Fill in the Blank</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Type in the correct name of the capital city to complete the sentence.</p>
+                </div>
+
+                <!-- Q8 -->
+                <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm interactive-box">
+                    <div class="flex items-start gap-3">
+                        <span class="bg-cyan-100 dark:bg-cyan-950/50 text-cyan-600 dark:text-cyan-400 font-bold px-2.5 py-1 rounded-lg text-sm">Q8</span>
+                        <div>
+                            <h4 class="font-bold text-md text-slate-900 dark:text-white leading-relaxed">
+                                Hawaii is an island state in the Pacific Ocean. Its vibrant capital city, located on the island of Oahu, is named <span class="hidden print:inline text-slate-400">_________________</span>.
+                            </h4>
+                            <p class="text-xs text-slate-400 mt-1">Hint: This city is home to the historic Iolani Palace (the only royal palace in the USA!).</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 no-print">
+                        <input type="text" id="q8_blank" class="w-full sm:w-80 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500/20 focus:border-cyan-500 transition-colors" placeholder="Type capital name here...">
+                    </div>
+                    <div id="feedback-q8" class="hidden mt-4 p-3.5 rounded-xl text-sm leading-relaxed"></div>
+                </div>
+            </div>
+
+            <!-- SECTION 4: Short Essay (Questions 9 - 10) -->
+            <div class="space-y-6">
+                <div class="border-l-4 border-amber-500 pl-4 py-1">
+                    <h3 class="text-xl font-bold uppercase tracking-wide text-amber-600 dark:text-amber-400">Part 4: Short Essays</h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Write 2 to 3 sentences answering the prompts below to express your ideas.</p>
+                </div>
+
+                <!-- Q9 -->
+                <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm interactive-box">
+                    <div class="flex items-start gap-3">
+                        <span class="bg-amber-100 dark:bg-amber-950/50 text-amber-600 dark:text-amber-400 font-bold px-2.5 py-1 rounded-lg text-sm">Q9</span>
+                        <div>
+                            <h4 class="font-bold text-md text-slate-900 dark:text-white">Why do you think states choose a specific capital city instead of letting every single city make its own rules? How does having one capital city help a state run smoothly?</h4>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <textarea id="q9_essay" rows="3" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition-colors" placeholder="Write your ideas here..."></textarea>
+                    </div>
+                    <div id="feedback-q9" class="hidden mt-4 p-3.5 rounded-xl text-sm leading-relaxed"></div>
+                </div>
+
+                <!-- Q10 -->
+                <div class="bg-white dark:bg-slate-900 rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-sm interactive-box">
+                    <div class="flex items-start gap-3">
+                        <span class="bg-amber-100 dark:bg-amber-950/50 text-amber-600 dark:text-amber-400 font-bold px-2.5 py-1 rounded-lg text-sm">Q10</span>
+                        <div>
+                            <h4 class="font-bold text-md text-slate-900 dark:text-white">Imagine you are the architect designing a brand-new capitol building for your state. What unique features or decorations would you add to represent your state's history, animals, or natural beauty?</h4>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <textarea id="q10_essay" rows="3" class="w-full bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition-colors" placeholder="Write your ideas here..."></textarea>
+                    </div>
+                    <div id="feedback-q10" class="hidden mt-4 p-3.5 rounded-xl text-sm leading-relaxed"></div>
+                </div>
+            </div>
+
+            <!-- Action Buttons for Student Submission -->
+            <div class="no-print flex flex-col sm:flex-row gap-4 pt-4">
+                <button type="button" onclick="gradeQuiz()" class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-6 rounded-2xl shadow-xl shadow-indigo-600/10 active:scale-98 transition duration-150">
+                    Submit Quiz & Get Instant Feedback! 🏆
+                </button>
+                <button type="button" onclick="resetQuiz()" class="bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-bold py-4 px-8 rounded-2xl transition duration-150">
+                    Start Over 🔄
+                </button>
+            </div>
+
+        </form>
+
+        <!-- Feedback Summary Jumbotron -->
+        <div id="resultsBanner" class="hidden no-print mt-8 bg-gradient-to-r from-emerald-500 to-teal-600 text-white p-8 rounded-2xl shadow-lg border border-emerald-400/20">
+            <div class="flex flex-col sm:flex-row items-center gap-6">
+                <div class="bg-white/20 p-5 rounded-full text-4xl">🏅</div>
+                <div class="text-center sm:text-left flex-1">
+                    <h2 class="text-2xl font-black">Awesome Effort, Explorer!</h2>
+                    <p class="text-sm text-emerald-100 mt-2">You have completed your State Capitols Quest. Check below to learn more about our amazing cities!</p>
+                    <div class="mt-4 flex flex-wrap gap-3">
+                        <span id="scoreBadge" class="bg-white text-emerald-800 font-bold px-4 py-1.5 rounded-xl text-sm shadow-sm">Score: Pending/8</span>
+                        <span class="bg-white/15 px-4 py-1.5 rounded-xl text-sm">Perfect for classroom portfolio tracking</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TEACHER RESOURCE & PORTAL PANEL -->
+        <section id="teacherPortal" class="no-print mt-16 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 shadow-md">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-6 mb-6 gap-4">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-purple-100 dark:bg-purple-950/40 p-2.5 rounded-xl text-purple-600 dark:text-purple-400">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold text-slate-900 dark:text-white">Teacher's Curriculum Toolbox</h2>
+                        <p class="text-xs text-slate-400">Export options and direct digital curriculum integration tools.</p>
+                    </div>
+                </div>
+
+                <!-- Print & QTI Download buttons -->
+                <div class="flex flex-wrap gap-2">
+                    <button type="button" onclick="triggerPDFPrint()" class="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-bold py-2.5 px-4 rounded-xl text-sm transition">
+                        🖨️ Print / Download PDF
+                    </button>
+                    <button type="button" onclick="downloadQTIFile()" class="flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white font-bold py-2.5 px-4 rounded-xl text-sm transition shadow-lg shadow-purple-600/10">
+                        📦 Download Brightspace QTI XML
+                    </button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="space-y-4">
+                    <h3 class="font-bold text-slate-800 dark:text-white flex items-center gap-2 text-sm uppercase tracking-wide">
+                        <span>💡</span> LMS Import Instructions (Brightspace)
+                    </h3>
+                    <ol class="text-xs text-slate-600 dark:text-slate-400 space-y-2.5 list-decimal list-inside pl-1 leading-relaxed">
+                        <li>Click the <strong>Download Brightspace QTI XML</strong> button above.</li>
+                        <li>Log in to your <strong>Brightspace Course Shell</strong>.</li>
+                        <li>Go to <strong>Course Admin</strong> &gt; <strong>Import/Export/Copy Components</strong>.</li>
+                        <li>Select <strong>Import Components</strong>, choose the downloaded QTI XML file, and click <strong>Start</strong>.</li>
+                        <li>Brightspace will automatically build the quiz featuring these 10 formatted questions!</li>
+                    </ol>
+                </div>
+
+                <div class="space-y-4">
+                    <h3 class="font-bold text-slate-800 dark:text-white flex items-center gap-2 text-sm uppercase tracking-wide">
+                        <span>📋</span> 5th Grade Curriculum Alignments
+                    </h3>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                        This exam tests primary US regional geography, governance mechanisms, and interactive civic spaces. 
+                        It integrates perfectly with common core elementary social studies programs looking to analyze geographic identifiers and state-level administrative hubs.
+                    </p>
+                    <!-- Quick Answer Key reference -->
+                    <div class="p-3 bg-slate-50 dark:bg-slate-950 rounded-xl border border-slate-200/50 dark:border-slate-800/50">
+                        <span class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wide mb-1">Quick Key Check</span>
+                        <div class="text-[11px] font-mono text-slate-500 dark:text-slate-400 grid grid-cols-2 gap-1">
+                            <div>Q1: Austin (C)</div>
+                            <div>Q2: Albany (C)</div>
+                            <div>Q3: Sacramento (B)</div>
+                            <div>Q4: Tallahassee (D)</div>
+                            <div>Q5: Denver (C)</div>
+                            <div>Q6: GA:Atlanta | WA:Olympia | IL:Springfield</div>
+                            <div>Q7: MI:Lansing | MA:Boston | AZ:Phoenix</div>
+                            <div>Q8: Honolulu</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Interactive Javascript Logic -->
+    <script>
+        // Theme Management
+        const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            const html = document.documentElement;
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                html.classList.add('light');
+            } else {
+                html.classList.remove('light');
+                html.classList.add('dark');
+            }
+        });
+
+        // Comprehensive Answer Key & Child-friendly Explanations
+        const answers = {
+            q1: { ans: "C", explain: "Correct! Austin is the capital of Texas. It is famous for its lively music scene and the colony of bats that nests under the Congress Avenue Bridge every summer!" },
+            q2: { ans: "C", explain: "Spot on! Albany has been New York's capital since 1797. Even though New York City has more people, Albany is the historical heart of New York's government!" },
+            q3: { ans: "B", explain: "Awesome job! Sacramento became the capital in 1854 during the historic California Gold Rush, when people rushed West looking for gold!" },
+            q4: { ans: "D", explain: "Perfect! Tallahassee became Florida's capital in 1824 because it was located right halfway between the historic colonial hubs of Pensacola and St. Augustine." },
+            q5: { ans: "C", explain: "You nailed it! Denver is called the 'Mile High City' because its elevation is exactly 5,280 feet (one mile) above sea level, right alongside the Rocky Mountains!" },
+            q6: {
+                matches: { m1_1: "Atlanta", m1_2: "Olympia", m1_3: "Springfield" },
+                explain: "Excellent matching! Georgia's capital is Atlanta, Washington's is Olympia, and Illinois' is Springfield (famous for being the home of Abraham Lincoln!)."
+            },
+            q7: {
+                matches: { m2_1: "Lansing", m2_2: "Boston", m2_3: "Phoenix" },
+                explain: "Fantastic matching! Michigan's capital is Lansing, Massachusetts' is historic Boston (famous for the Boston Tea Party!), and Arizona's is sunny Phoenix."
+            },
+            q8: { ans: "honolulu", explain: "Incredible! Honolulu is the capital of Hawaii. The name Honolulu means 'sheltered harbor' or 'calm port' in the beautiful Hawaiian language." },
+            q9: { explain: "Essay Question Evaluation: State capitals centralize leadership so representatives from all towns can gather to debate laws, write rules, and ensure fairness across the state." },
+            q10: { explain: "Essay Question Evaluation: Capitol buildings are built to reflect a state's heritage. Many display native stone, state murals, native wildlife, or beautiful historical statues!" }
+        };
+
+        // Interactive grading function
+        function gradeQuiz() {
+            let score = 0;
+            const form = document.getElementById('quizForm');
+
+            // --- GRADE Q1 ---
+            const q1Val = form.elements['q1'] ? form.elements['q1'].value : '';
+            const f1 = document.getElementById('feedback-q1');
+            f1.classList.remove('hidden', 'bg-emerald-100', 'text-emerald-800', 'bg-rose-100', 'text-rose-800', 'dark:bg-emerald-950/40', 'dark:text-emerald-300', 'dark:bg-rose-950/40', 'dark:text-rose-300');
+            if (q1Val === answers.q1.ans) {
+                score++;
+                f1.classList.add('bg-emerald-100', 'text-emerald-800', 'dark:bg-emerald-950/40', 'dark:text-emerald-300');
+                f1.innerHTML = `<strong>🟢 Correct!</strong> ${answers.q1.explain}`;
+            } else {
+                f1.classList.add('bg-rose-100', 'text-rose-800', 'dark:bg-rose-950/40', 'dark:text-rose-300');
+                f1.innerHTML = `<strong>🔴 Not quite!</strong> The correct answer is <strong>C) Austin</strong>. <br><span class="text-xs">${answers.q1.explain}</span>`;
+            }
+            f1.classList.remove('hidden');
+
+            // --- GRADE Q2 ---
+            const q2Val = form.elements['q2'] ? form.elements['q2'].value : '';
+            const f2 = document.getElementById('feedback-q2');
+            f2.classList.remove('hidden', 'bg-emerald-100', 'text-emerald-800', 'bg-rose-100', 'text-rose-800', 'dark:bg-emerald-950/40', 'dark:text-emerald-300', 'dark:bg-rose-950/40', 'dark:text-rose-300');
+            if (q2Val === answers.q2.ans) {
+                score++;
+                f2.classList.add('bg-emerald-100', 'text-emerald-800', 'dark:bg-emerald-950/40', 'dark:text-emerald-300');
+                f2.innerHTML = `<strong>🟢 Correct!</strong> ${answers.q2.explain}`;
+            } else {
+                f2.classList.add('bg-rose-100', 'text-rose-800', 'dark:bg-rose-950/40', 'dark:text-rose-300');
+                f2.innerHTML = `<strong>🔴 Not quite!</strong> The correct answer is <strong>C) Albany</strong>. <br><span class="text-xs">${answers.q2.explain}</span>`;
+            }
+            f2.classList.remove('hidden');
+
+            // --- GRADE Q3 ---
+            const q3Val = form.elements['q3'] ? form.elements['q3'].value : '';
+            const f3 = document.getElementById('feedback-q3');
+            f3.classList.remove('hidden', 'bg-emerald-100', 'text-emerald-800', 'bg-rose-100', 'text-rose-800', 'dark:bg-emerald-950/40', 'dark:text-emerald-300', 'dark:bg-rose-950/40', 'dark:text-rose-300');
+            if (q3Val === answers.q3.ans) {
+                score++;
+                f3.classList.add('bg-emerald-100', 'text-emerald-800', 'dark:bg-emerald-950/40', 'dark:text-emerald-300');
+                f3.innerHTML = `<strong>🟢 Correct!</strong> ${answers.q3.explain}`;
+            } else {
+                f3.classList.add('bg-rose-100', 'text-rose-800', 'dark:bg-rose-950/40', 'dark:text-rose-300');
+                f3.innerHTML = `<strong>🔴 Not quite!</strong> The correct answer is <strong>B) Sacramento</strong>. <br><span class="text-xs">${answers.q3.explain}</span>`;
+            }
+            f3.classList.remove('hidden');
+
+            // --- GRADE Q4 ---
+            const q4Val = form.elements['q4'] ? form.elements['q4'].value : '';
+            const f4 = document.getElementById('feedback-q4');
+            f4.classList.remove('hidden', 'bg-emerald-100', 'text-emerald-800', 'bg-rose-100', 'text-rose-800', 'dark:bg-emerald-950/40', 'dark:text-emerald-300', 'dark:bg-rose-950/40', 'dark:text-rose-300');
+            if (q4Val === answers.q4.ans) {
+                score++;
+                f4.classList.add('bg-emerald-100', 'text-emerald-800', 'dark:bg-emerald-950/40', 'dark:text-emerald-300');
+                f4.innerHTML = `<strong>🟢 Correct!</strong> ${answers.q4.explain}`;
+            } else {
+                f4.classList.add('bg-rose-100', 'text-rose-800', 'dark:bg-rose-950/40', 'dark:text-rose-300');
+                f4.innerHTML = `<strong>🔴 Not quite!</strong> The correct answer is <strong>D) Tallahassee</strong>. <br><span class="text-xs">${answers.q4.explain}</span>`;
+            }
+            f4.classList.remove('hidden');
+
+            // --- GRADE Q5 ---
+            const q5Val = form.elements['q5'] ? form.elements['q5'].value : '';
+            const f5 = document.getElementById('feedback-q5');
+            f5.classList.remove('hidden', 'bg-emerald-100', 'text-emerald-800', 'bg-rose-100', 'text-rose-800', 'dark:bg-emerald-950/40', 'dark:text-emerald-300', 'dark:bg-rose-950/40', 'dark:text-rose-300');
+            if (q5Val === answers.q5.ans) {
+                score++;
+                f5.classList.add('bg-emerald-100', 'text-emerald-800', 'dark:bg-emerald-950/40', 'dark:text-emerald-300');
+                f5.innerHTML = `<strong>🟢 Correct!</strong> ${answers.q5.explain}`;
+            } else {
+                f5.classList.add('bg-rose-100', 'text-rose-800', 'dark:bg-rose-950/40', 'dark:text-rose-300');
+                f5.innerHTML = `<strong>🔴 Not quite!</strong> The correct answer is <strong>C) Denver</strong>. <br><span class="text-xs">${answers.q5.explain}</span>`;
+            }
+            f5.classList.remove('hidden');
+
+            // --- GRADE Q6 MATCHING ---
+            const m1_1Val = document.getElementById('m1_1').value;
+            const m1_2Val = document.getElementById('m1_2').value;
+            const m1_3Val = document.getElementById('m1_3').value;
+            const f6 = document.getElementById('feedback-q6');
+            f6.classList.remove('hidden', 'bg-emerald-100', 'text-emerald-800', 'bg-rose-100', 'text-rose-800', 'dark:bg-emerald-950/40', 'dark:text-emerald-300', 'dark:bg-rose-950/40', 'dark:text-rose-300');
+            
+            if (m1_1Val === answers.q6.matches.m1_1 && m1_2Val === answers.q6.matches.m1_2 && m1_3Val === answers.q6.matches.m1_3) {
+                score++;
+                f6.classList.add('bg-emerald-100', 'text-emerald-800', 'dark:bg-emerald-950/40', 'dark:text-emerald-300');
+                f6.innerHTML = `<strong>🟢 All Matches Correct!</strong> ${answers.q6.explain}`;
+            } else {
+                f6.classList.add('bg-rose-100', 'text-rose-800', 'dark:bg-rose-950/40', 'dark:text-rose-300');
+                f6.innerHTML = `<strong>🔴 Match Incomplete or Incorrect!</strong> Georgia: <strong>Atlanta</strong>, Washington: <strong>Olympia</strong>, Illinois: <strong>Springfield</strong>. <br><span class="text-xs">${answers.q6.explain}</span>`;
+            }
+            f6.classList.remove('hidden');
+
+            // --- GRADE Q7 MATCHING ---
+            const m2_1Val = document.getElementById('m2_1').value;
+            const m2_2Val = document.getElementById('m2_2').value;
+            const m2_3Val = document.getElementById('m2_3').value;
+            const f7 = document.getElementById('feedback-q7');
+            f7.classList.remove('hidden', 'bg-emerald-100', 'text-emerald-800', 'bg-rose-100', 'text-rose-800', 'dark:bg-emerald-950/40', 'dark:text-emerald-300', 'dark:bg-rose-950/40', 'dark:text-rose-300');
+            
+            if (m2_1Val === answers.q7.matches.m2_1 && m2_2Val === answers.q7.matches.m2_2 && m2_3Val === answers.q7.matches.m2_3) {
+                score++;
+                f7.classList.add('bg-emerald-100', 'text-emerald-800', 'dark:bg-emerald-950/40', 'dark:text-emerald-300');
+                f7.innerHTML = `<strong>🟢 All Matches Correct!</strong> ${answers.q7.explain}`;
+            } else {
+                f7.classList.add('bg-rose-100', 'text-rose-800', 'dark:bg-rose-950/40', 'dark:text-rose-300');
+                f7.innerHTML = `<strong>🔴 Match Incomplete or Incorrect!</strong> Michigan: <strong>Lansing</strong>, Massachusetts: <strong>Boston</strong>, Arizona: <strong>Phoenix</strong>. <br><span class="text-xs">${answers.q7.explain}</span>`;
+            }
+            f7.classList.remove('hidden');
+
+            // --- GRADE Q8 FILL IN BLANK ---
+            const q8Val = document.getElementById('q8_blank').value.trim().toLowerCase();
+            const f8 = document.getElementById('feedback-q8');
+            f8.classList.remove('hidden', 'bg-emerald-100', 'text-emerald-800', 'bg-rose-100', 'text-rose-800', 'dark:bg-emerald-950/40', 'dark:text-emerald-300', 'dark:bg-rose-950/40', 'dark:text-rose-300');
+            
+            if (q8Val === answers.q8.ans) {
+                score++;
+                f8.classList.add('bg-emerald-100', 'text-emerald-800', 'dark:bg-emerald-950/40', 'dark:text-emerald-300');
+                f8.innerHTML = `<strong>🟢 Excellent!</strong> ${answers.q8.explain}`;
+            } else {
+                f8.classList.add('bg-rose-100', 'text-rose-800', 'dark:bg-rose-950/40', 'dark:text-rose-300');
+                f8.innerHTML = `<strong>🔴 Try again!</strong> The correct answer is <strong>Honolulu</strong>. <br><span class="text-xs">${answers.q8.explain}</span>`;
+            }
+            f8.classList.remove('hidden');
+
+            // --- ESSAY FEEDS (Q9 & Q10) ---
+            const f9 = document.getElementById('feedback-q9');
+            f9.classList.remove('hidden');
+            f9.className = "mt-4 p-3.5 rounded-xl text-sm leading-relaxed bg-blue-50 text-blue-800 dark:bg-blue-950/40 dark:text-blue-300";
+            f9.innerHTML = `<strong>📝 Teacher Review:</strong> State capitals help centralize leadership so representatives from all towns can gather to debate laws and write fair rules. Your essay will be evaluated on expressing this concept!`;
+
+            const f10 = document.getElementById('feedback-q10');
+            f10.classList.remove('hidden');
+            f10.className = "mt-4 p-3.5 rounded-xl text-sm leading-relaxed bg-blue-50 text-blue-800 dark:bg-blue-950/40 dark:text-blue-300";
+            f10.innerHTML = `<strong>🎨 Teacher Review:</strong> Capitol buildings are designed with unique local stones, murals, or animal statues representing state beauty. Your design sounds creative!`;
+
+            // Display overall feedback
+            document.getElementById('resultsBanner').classList.remove('hidden');
+            document.getElementById('scoreBadge').innerText = `Score: ${score} / 8 Auto-graded Questions`;
+            window.scrollTo({ top: document.getElementById('resultsBanner').offsetTop - 100, behavior: 'smooth' });
+        }
+
+        // Reset Quiz function
+        function resetQuiz() {
+            document.getElementById('quizForm').reset();
+            document.getElementById('resultsBanner').classList.add('hidden');
+            
+            for (let i = 1; i <= 10; i++) {
+                const f = document.getElementById(`feedback-q${i}`);
+                if (f) f.classList.add('hidden');
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Print to PDF trigger
+        function triggerPDFPrint() {
+            window.print();
+        }
+
+        // Generates and triggers download of Brightspace-compliant QTI XML
+        function downloadQTIFile() {
+            const qtiXml = `<?xml version="1.0" encoding="UTF-8"?>
+<questestinterop>
+  <assessment ident="us_capitols_exam_5th" title="5th Grade US State Capitols Exam">
+    <section ident="section_1" title="US Capitols Questions">
+      
+      <!-- Question 1: Austin MCQ -->
+      <item ident="q1" title="Question 1 - Texas Capital">
+        <presentation>
+          <material>
+            <mattext texttype="text/html">Texas is known as the "Lone Star State." What is the capital city of Texas?</mattext>
+          </material>
+          <response_lid ident="response_q1" rcardinality="Single">
+            <render_choice>
+              <response_label ident="A"><material><mattext>Houston</mattext></material></response_label>
+              <response_label ident="B"><material><mattext>Dallas</mattext></material></response_label>
+              <response_label ident="C"><material><mattext>Austin</mattext></material></response_label>
+              <response_label ident="D"><material><mattext>San Antonio</mattext></material></response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes><decvar/></outcomes>
+          <respcondition>
+            <conditionvar><varequal respident="response_q1">C</varequal></conditionvar>
+            <setvar action="Set" let="1">10</setvar>
+            <displayfeedback feedbacktype="Response" linkrefid="correct_feed"/>
+          </respcondition>
+        </resprocessing>
+        <itemfeedback ident="correct_feed">
+          <flow_feedback>
+            <material><mattext>Correct! Austin is the capital of Texas, famous for its music scene and bats under the bridge.</mattext></material>
+          </flow_feedback>
+        </itemfeedback>
+      </item>
+
+      <!-- Question 2: Albany MCQ -->
+      <item ident="q2" title="Question 2 - New York Capital">
+        <presentation>
+          <material>
+            <mattext texttype="text/html">While New York City is the biggest city in New York, it is not the capital! Which city holds the title of New York's state capital?</mattext>
+          </material>
+          <response_lid ident="response_q2" rcardinality="Single">
+            <render_choice>
+              <response_label ident="A"><material><mattext>New York City</mattext></material></response_label>
+              <response_label ident="B"><material><mattext>Buffalo</mattext></material></response_label>
+              <response_label ident="C"><material><mattext>Albany</mattext></material></response_label>
+              <response_label ident="D"><material><mattext>Rochester</mattext></material></response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes><decvar/></outcomes>
+          <respcondition>
+            <conditionvar><varequal respident="response_q2">C</varequal></conditionvar>
+            <setvar action="Set" let="1">10</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+
+      <!-- Question 3: Sacramento MCQ -->
+      <item ident="q3" title="Question 3 - California Capital">
+        <presentation>
+          <material>
+            <mattext texttype="text/html">California is the Golden State. What is California's state capital?</mattext>
+          </material>
+          <response_lid ident="response_q3" rcardinality="Single">
+            <render_choice>
+              <response_label ident="A"><material><mattext>Los Angeles</mattext></material></response_label>
+              <response_label ident="B"><material><mattext>Sacramento</mattext></material></response_label>
+              <response_label ident="C"><material><mattext>San Francisco</mattext></material></response_label>
+              <response_label ident="D"><material><mattext>San Diego</mattext></material></response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes><decvar/></outcomes>
+          <respcondition>
+            <conditionvar><varequal respident="response_q3">B</varequal></conditionvar>
+            <setvar action="Set" let="1">10</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+
+      <!-- Question 4: Tallahassee MCQ -->
+      <item ident="q4" title="Question 4 - Florida Capital">
+        <presentation>
+          <material>
+            <mattext texttype="text/html">Florida is known for its beautiful beaches and sunshine. What is the capital of Florida?</mattext>
+          </material>
+          <response_lid ident="response_q4" rcardinality="Single">
+            <render_choice>
+              <response_label ident="A"><material><mattext>Miami</mattext></material></response_label>
+              <response_label ident="B"><material><mattext>Orlando</mattext></material></response_label>
+              <response_label ident="C"><material><mattext>Jacksonville</mattext></material></response_label>
+              <response_label ident="D"><material><mattext>Tallahassee</mattext></material></response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes><decvar/></outcomes>
+          <respcondition>
+            <conditionvar><varequal respident="response_q4">D</varequal></conditionvar>
+            <setvar action="Set" let="1">10</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+
+      <!-- Question 5: Denver MCQ -->
+      <item ident="q5" title="Question 5 - Colorado Capital">
+        <presentation>
+          <material>
+            <mattext texttype="text/html">One US state capital is located exactly one mile high above sea level! Which of these capital cities sits in the Rocky Mountains?</mattext>
+          </material>
+          <response_lid ident="response_q5" rcardinality="Single">
+            <render_choice>
+              <response_label ident="A"><material><mattext>Salt Lake City</mattext></material></response_label>
+              <response_label ident="B"><material><mattext>Santa Fe</mattext></material></response_label>
+              <response_label ident="C"><material><mattext>Denver</mattext></material></response_label>
+              <response_label ident="D"><material><mattext>Helena</mattext></material></response_label>
+            </render_choice>
+          </response_lid>
+        </presentation>
+        <resprocessing>
+          <outcomes><decvar/></outcomes>
+          <respcondition>
+            <conditionvar><varequal respident="response_q5">C</varequal></conditionvar>
+            <setvar action="Set" let="1">10</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+
+      <!-- Question 6: Georgia, Washington, Illinois Matching -->
+      <item ident="q6" title="Question 6 - Matching Capitols Group 1">
+        <presentation>
+          <material>
+            <mattext texttype="text/html">Match the Western &amp; Southern states with their correct capitals: Georgia, Washington, Illinois.</mattext>
+          </material>
+          <response_grp ident="response_q6" rcardinality="Multiple">
+            <render_choice>
+              <response_label ident="Georgia"><material><mattext>Georgia</mattext></material></response_label>
+              <response_label ident="Washington"><material><mattext>Washington</mattext></material></response_label>
+              <response_label ident="Illinois"><material><mattext>Illinois</mattext></material></response_label>
+            </render_choice>
+          </response_grp>
+        </presentation>
+        <resprocessing>
+          <outcomes><decvar/></outcomes>
+        </resprocessing>
+      </item>
+
+      <!-- Question 7: Michigan, Massachusetts, Arizona Matching -->
+      <item ident="q7" title="Question 7 - Matching Capitols Group 2">
+        <presentation>
+          <material>
+            <mattext texttype="text/html">Match the Midwest &amp; Eastern states with their correct capitals: Michigan, Massachusetts, Arizona.</mattext>
+          </material>
+          <response_grp ident="response_q7" rcardinality="Multiple">
+            <render_choice>
+              <response_label ident="Michigan"><material><mattext>Michigan</mattext></material></response_label>
+              <response_label ident="Massachusetts"><material><mattext>Massachusetts</mattext></material></response_label>
+              <response_label ident="Arizona"><material><mattext>Arizona</mattext></material></response_label>
+            </render_choice>
+          </response_grp>
+        </presentation>
+        <resprocessing>
+          <outcomes><decvar/></outcomes>
+        </resprocessing>
+      </item>
+
+      <!-- Question 8: Hawaii Fill-In -->
+      <item ident="q8" title="Question 8 - Hawaii Capital Fill-In">
+        <presentation>
+          <material>
+            <mattext texttype="text/html">Hawaii is an island state in the Pacific Ocean. Its vibrant capital city, located on the island of Oahu, is named [blank].</mattext>
+          </material>
+          <response_str ident="response_q8" rcardinality="Single">
+            <render_fib>
+              <response_label ident="ans_q8"/>
+            </render_fib>
+          </response_str>
+        </presentation>
+        <resprocessing>
+          <outcomes><decvar/></outcomes>
+          <respcondition>
+            <conditionvar><varequal respident="response_q8">Honolulu</varequal></conditionvar>
+            <setvar action="Set" let="1">10</setvar>
+          </respcondition>
+        </resprocessing>
+      </item>
+
+      <!-- Question 9: Essay 1 -->
+      <item ident="q9" title="Question 9 - Purpose of Capitals">
+        <presentation>
+          <material>
+            <mattext texttype="text/html">Why do you think states choose a specific capital city instead of letting every single city make its own rules? How does having one capital city help a state run smoothly?</mattext>
+          </material>
+          <response_str ident="response_q9" rcardinality="Single">
+            <render_fib>
+              <response_label ident="essay_q9"/>
+            </render_fib>
+          </response_str>
+        </presentation>
+        <resprocessing>
+          <outcomes><decvar/></outcomes>
+        </resprocessing>
+      </item>
+
+      <!-- Question 10: Essay 2 -->
+      <item ident="q10" title="Question 10 - Architect Creative Design">
+        <presentation>
+          <material>
+            <mattext texttype="text/html">Imagine you are the architect designing a brand-new capitol building for your state. What unique features or decorations would you add to represent your state's history, animals, or natural beauty?</mattext>
+          </material>
+          <response_str ident="response_q10" rcardinality="Single">
+            <render_fib>
+              <response_label ident="essay_q10"/>
+            </render_fib>
+          </response_str>
+        </presentation>
+        <resprocessing>
+          <outcomes><decvar/></outcomes>
+        </resprocessing>
+      </item>
+
+    </section>
+  </assessment>
+</questestinterop>`;
+
+            // Creating blob file download
+            const blob = new Blob([qtiXml], { type: 'text/xml' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'US_State_Capitols_Exam_Brightspace_QTI.xml';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
+</body>
+</html>
